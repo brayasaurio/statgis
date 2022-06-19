@@ -22,6 +22,8 @@ With `landsat_scaler()` you can scale an image to SR values only passing to it t
 import ee
 from statgis.gee.landsat_functions import landsat_scaler
 
+ee.Initialize()
+
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
 img = L8.first()
 
@@ -55,6 +57,8 @@ This function can be mapped to an `ee.ImageCollection`.
 ```python
 import ee
 from statgis.gee.landsat_functions import landsat_cloud_mask
+
+ee.Initialize()
 
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
 img = L8.first()
@@ -91,6 +95,8 @@ landsat_ndvi_collection(ImageCollection:ee.ImageCollection, L8:bool=True, add_ba
 ```python
 import ee
 from statgis.gee.landsat_functions import landsat_ndvi, landsat_ndvi_collection
+
+ee.Initialize()
 
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
 img = L8.first()
