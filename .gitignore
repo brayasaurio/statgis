@@ -1,0 +1,6 @@
+poetry.lock
+pyproject.toml
+/.pytest_cache
+/src/statgis/__pycache__
+/src/statgis/gee/__pycache__
+/tests/__pycache__
