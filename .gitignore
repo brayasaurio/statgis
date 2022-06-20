@@ -4,3 +4,4 @@ pyproject.toml
 /src/statgis/__pycache__
 /src/statgis/gee/__pycache__
 /tests/__pycache__
+/dist
