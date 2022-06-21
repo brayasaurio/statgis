@@ -6,3 +6,4 @@ pyproject.toml
 /tests/__pycache__
 /dist
 prueba.ipynb
+/__pycache__
