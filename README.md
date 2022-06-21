@@ -42,7 +42,7 @@ To contribute you have to read and understand the [code of conduct](CONDUCT.md) 
 
 ## License
 
-This software is protected by a GPUv3 License that let you use and copy the software but, you can't develop your own version. The complete description is in the [license file](LICENSE.txt).
+This software is protected by a GNU GPL-3 License that let you use and copy the software but, you can't develop your own version. The complete description is in the [license file](LICENSE.txt).
 
 ## Credits
 
