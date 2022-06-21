@@ -8,7 +8,14 @@ This package depends of [earthengine-api](https://developers.google.com/earth-en
 
 ```bash
 $ conda install geopandas
-$ conda install earthengine-api
+$ conda install -c conda-forge earthengine-api
+```
+
+Also you should install [geemap](https://geemap.org/get-started/) to plot an interact ee objects
+
+```bash
+$ conda install geemap localtileserver -c conda-forge
+$ conda install jupyter_contrib_nbextensions -c conda-forge
 ```
 
 To use `earthengine-api` you have to sing up to [Google Earth Engine](https://earthengine.google.com/new_signup/) and authneticate with the comand `Authenticate()`.
