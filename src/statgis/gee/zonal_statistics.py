@@ -50,7 +50,7 @@ def zonal_statistics_image(Image, band, geom, scale):
 
     return stats
 
-def zonal_statistics_collection(ImageCollection, geom, band, scale):  
+def zonal_statistics_collection(ImageCollection, band, geom, scale):  
     '''
     Calc the mean, maximum, minimum standard deviation
     of a band in all ee.Image in an ee.ImageCollection in the 

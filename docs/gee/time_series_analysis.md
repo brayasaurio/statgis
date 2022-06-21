@@ -22,7 +22,7 @@ from statgis.gee.time_series_analysis import extrac_dates
 ee.Initialize()
 
 # %% Prepare data
-bqlla = [-74.839, 10.995] # Visit Barranquilla!
+bqlla = [-74.7963, 10.9638] # Visit Barranquilla!
 
 poi = ee.Geometry.Point(bqlla)
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2').filterBounds(poi)
@@ -51,7 +51,7 @@ from statgis.gee.time_series_analysis import trend
 ee.Initialize()
 
 # %% Prepare data
-bqlla = [-74.839, 10.995] # Visit Barranquilla!
+bqlla = [-74.7963, 10.9638]
 
 poi = ee.Geometry.Point(bqlla)
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2').filterBounds(poi)
@@ -80,7 +80,7 @@ from statgis.gee.time_series_analysis import trend, monthly_calc
 ee.Initialize()
 
 # %% Prepare data
-bqlla = [-74.839, 10.995] # Visit Barranquilla!
+bqlla = [-74.7963, 10.9638]
 
 poi = ee.Geometry.Point(bqlla)
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2').filterBounds(poi)
@@ -114,7 +114,7 @@ from statgis.gee.time_series_analysis import trend, monthly_calc, calc_anomalies
 ee.Initialize()
 
 # %% Prepare data
-bqlla = [-74.839, 10.995] # Visit Barranquilla!
+bqlla = [-74.7963, 10.9638]
 
 poi = ee.Geometry.Point(bqlla)
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2').filterBounds(poi)
@@ -153,7 +153,7 @@ from statgis.gee.time_series_analysis import *
 ee.Initialize()
 
 # %% Prepare data
-bqlla = [-74.839, 10.995] # Visit Barranquilla!
+bqlla = [-74.7963, 10.9638]
 
 poi = ee.Geometry.Point(bqlla)
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2').filterBounds(poi)
