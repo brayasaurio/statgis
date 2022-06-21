@@ -5,3 +5,4 @@ pyproject.toml
 /src/statgis/gee/__pycache__
 /tests/__pycache__
 /dist
+prueba.ipynb
