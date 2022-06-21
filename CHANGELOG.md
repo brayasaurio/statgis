@@ -1,7 +1,9 @@
 # Changelog
 
+## Version 0.1.2
+Fix minimal issues.
 ## Version 0.1.1
-Add zonal statistics functions for ee.Image and ee.ImageCollection
+Add zonal statistics functions for ee.Image and ee.ImageCollection.
 
 ## Version 0.1.0
 
