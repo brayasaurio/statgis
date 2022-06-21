@@ -112,6 +112,6 @@ def zonal_statistics_collection(ImageCollection, band, geom, scale):
         if i == 0:
             dataframe = data
         else:
-            dataframe = dataframe.append(data)
+            dataframe = pd.concat([dataframe, data])
 
     return dataframe
