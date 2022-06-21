@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.1.1
+Add zonal statistics functions for ee.Image and ee.ImageCollection
+
 ## Version 0.1.0
 
 - Create statgis package
