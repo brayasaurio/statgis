@@ -1,15 +1,13 @@
-import numpy as np
-import pandas as pd
-import geopandas as gpd
-
 import ee
+import numpy as np
+
 from statgis.gee.landsat_functions import landsat_scaler, landsat_cloud_mask, landsat_ndvi_collection
 from statgis.gee.time_series_analysis import basic_tsp
-from statgis.gee.zonal_statistics import zonal_statistics_image, zonal_statistics_collection
+from statgis.gee.sample import sample_image, sample_collection
 
 ee.Initialize()
 
-# %% Prepare the data
+# %% Prepare data
 bqlla = [-74.7963, 10.9638]
 roi = ee.Geometry.Rectangle([bqlla[0]-0.05, bqlla[1]-0.05, bqlla[0], bqlla[1]])
 L8 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2').filterBounds(roi)
@@ -20,8 +18,8 @@ ndvi, monthly_mean = basic_tsp(ndvi, 'NDVI')
 
 ene = monthly_mean.first()
 
-# %% Zonal statistics for an ee.Image
-zsi = zonal_statistics_image(ene, 'stational_mean', roi, 30)
+# %% Sample an ee.Image
+data_ene = sample_image(ene, 'stational_mean', roi, 30)
 
-# %% Zonal statistics for an ee.ImageCollection
-zsc = zonal_statistics_collection(ndvi, 'stational', roi, 30)
+# %% Sample all ee.Image in an ee.ImageCollection
+data_months = sample_collection(monthly_mean, 'stational_mean', roi, 30)
