@@ -7,3 +7,4 @@ pyproject.toml
 /dist
 prueba.ipynb
 /__pycache__
+/javascript
