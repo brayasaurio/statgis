@@ -15,9 +15,9 @@ The `sample_image()` function take a ee.Geometry (or `ee.Feature` or `ee.Feature
 ```Python
 import ee
 
-from src.statgis.gee.landsat_functions import landsat_scaler, landsat_cloud_mask, landsat_ndvi_collection
-from src.statgis.gee.time_series_analysis import basic_tsp
-from src.statgis.gee.sample import sample_image, sample_collection
+from statgis.gee.landsat_functions import landsat_scaler, landsat_cloud_mask, landsat_ndvi_collection
+from statgis.gee.time_series_analysis import basic_tsp
+from statgis.gee.sample import sample_image, sample_collection
 
 ee.Initialize()
 
@@ -49,9 +49,9 @@ The `sample_collection()` function take the `sample_image()` function and apply 
 ```Python
 import ee
 
-from src.statgis.gee.landsat_functions import landsat_scaler, landsat_cloud_mask, landsat_ndvi_collection
-from src.statgis.gee.time_series_analysis import basic_tsp
-from src.statgis.gee.sample import sample_collection
+from statgis.gee.landsat_functions import landsat_scaler, landsat_cloud_mask, landsat_ndvi_collection
+from statgis.gee.time_series_analysis import basic_tsp
+from statgis.gee.sample import sample_collection
 
 ee.Initialize()
 
