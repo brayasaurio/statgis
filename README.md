@@ -34,7 +34,7 @@ To install `statgis` you only have to run the `pip install` comand:
 $ pip install statgis
 ```
 
-The current version of statgis is 0.1.2.
+The current version of statgis is 0.1.3.
 
 ## Contribution
 

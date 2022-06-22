@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.1.3
+Add sample funtions for ee.Image and ee.ImageCollection.
+
 ## Version 0.1.2
 Fix minimal issues.
 ## Version 0.1.1
