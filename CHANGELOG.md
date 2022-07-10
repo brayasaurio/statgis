@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.1.6
+Fixed Computed time out excepetion from zonal statistics.
+
 ## Version 0.1.3
 Add sample funtions for ee.Image and ee.ImageCollection.
 
