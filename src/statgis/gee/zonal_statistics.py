@@ -2,7 +2,7 @@ import ee
 import numpy as np
 import pandas as pd
 
-def zonal_statistics_image(Image, band, geom, scale):
+def zonal_statistics_image(Image, band, geom, scale, tileScale):
     '''
     Calc the mean, maximum, minimum standard deviation
     of a band ee:Image in the specified ee.Geometry.
@@ -27,30 +27,27 @@ def zonal_statistics_image(Image, band, geom, scale):
         DataFrame with all the stats per column.
 
     '''
-    mean = Image.reduceRegion(reducer=ee.Reducer.mean(), geometry=geom, scale=scale)
-    maxi = Image.reduceRegion(reducer=ee.Reducer.max(), geometry=geom, scale=scale)
-    mini = Image.reduceRegion(reducer=ee.Reducer.min(), geometry=geom, scale=scale)
-    count = Image.reduceRegion(reducer=ee.Reducer.count(), geometry=geom, scale=scale)
-    stdDev = Image.reduceRegion(reducer=ee.Reducer.stdDev(), geometry=geom, scale=scale)
+    mean = Image.reduceRegion(reducer=ee.Reducer.mean(), geometry=geom, scale=scale, tileScale=tileScale)
+    maxi = Image.reduceRegion(reducer=ee.Reducer.max(), geometry=geom, scale=scale, tileScale=tileScale)
+    mini = Image.reduceRegion(reducer=ee.Reducer.min(), geometry=geom, scale=scale, tileScale=tileScale)
+    count = Image.reduceRegion(reducer=ee.Reducer.count(), geometry=geom, scale=scale, tileScale=tileScale)
+    stdDev = Image.reduceRegion(reducer=ee.Reducer.stdDev(), geometry=geom, scale=scale, tileScale=tileScale)
 
     data = ee.Feature(
         geom=geom,
         opt_properties={
             'system:time_start':Image.get('system:time_start'),
-            'mean':mean.get(band),
-            'max':maxi.get(band),
-            'min':mini.get(band),
-            'count':count.get(band),
-            'std':stdDev.get(band),
         }
     )
+
+    data = data.set('mean', mean.get(band)).set('max', maxi.get(band)).set('min', mini.get(band)).set('count', count.get(band)).set('std', stdDev.get(band))
 
     raw_values = data.getInfo()
     stats = pd.DataFrame(raw_values['properties'], index=[0])
 
     return stats
 
-def zonal_statistics_collection(ImageCollection, band, geom, scale):  
+def zonal_statistics_collection(ImageCollection, band, geom, scale, tileScale):  
     '''
     Calc the mean, maximum, minimum standard deviation
     of a band in all ee.Image in an ee.ImageCollection in the 
@@ -81,23 +78,33 @@ def zonal_statistics_collection(ImageCollection, band, geom, scale):
         This is a minimal version of zonal_statistics_image function
         to be mapped in an ee.ImageCollection.
         '''
-        mean = Image.reduceRegion(reducer=ee.Reducer.mean(), geometry=geom, scale=scale)
-        maxi = Image.reduceRegion(reducer=ee.Reducer.max(), geometry=geom, scale=scale)
-        mini = Image.reduceRegion(reducer=ee.Reducer.min(), geometry=geom, scale=scale)
-        count = Image.reduceRegion(reducer=ee.Reducer.count(), geometry=geom, scale=scale)
-        stdDev = Image.reduceRegion(reducer=ee.Reducer.stdDev(), geometry=geom, scale=scale)
+        stats = Image.reduceRegion(
+            ee.Reducer.mean().combine(
+                ee.Reducer.stdDev().combine(
+                    ee.Reducer.max().combine(
+                        ee.Reducer.min().combine(
+                            ee.Reducer.count(),
+                            sharedInputs=True
+                        ),
+                        sharedInputs=True
+                    ),
+                    sharedInputs=True
+                ),
+                sharedInputs=True
+            ),
+            geometry=geom,
+            scale=scale,
+            tileScale=tileScale
+        )
 
         data = ee.Feature(
             geom=geom,
             opt_properties={
                 'system:time_start':Image.get('system:time_start'),
-                'mean':mean.get(band),
-                'max':maxi.get(band),
-                'min':mini.get(band),
-                'count':count.get(band),
-                'std':stdDev.get(band),
             }
         )
+
+        data = data.set('mean', stats.get(band+'_mean')).set('max', stats.get(band+'_max')).set('min', stats.get(band+'_min')).set('count', stats.get(band+'_count')).set('std', stats.get(band+'_stdDev'))
 
         return data
 
