@@ -46,4 +46,4 @@ This software is protected by a GNU GPL-3 License that let you use and copy the 
 
 ## Credits
 
-All the attribution of the development and maintance of this package is for StatGIS.org and its developers team:
+All the attribution of the development and maintance of this package is for StatGIS.org and its developers team.
